@@ -20,29 +20,105 @@
         }
 
         body {
-            font-family: 'Gorton', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: white;
-            color: black;
-            line-height: 1.4;
+            font-family: 'Gorton', Arial, sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            line-height: 1.6;
+            text-transform: uppercase;
         }
 
-        .header {
-            text-align: center;
-            padding: 60px 20px 40px;
-            border-bottom: 1px solid black;
-            margin-bottom: 60px;
+        /* Fixed Navigation Bar */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
         }
 
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 300;
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
             letter-spacing: 2px;
             cursor: pointer;
-            transition: opacity 0.2s ease;
+            transition: opacity 0.3s ease;
         }
 
-        .header h1:hover {
+        .logo:hover {
             opacity: 0.7;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-item {
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            border: none;
+            background: none;
+            color: inherit;
+            font-family: 'Gorton', Arial, sans-serif;
+        }
+
+        .nav-item:hover {
+            opacity: 0.6;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            font-family: 'Gorton', Arial, sans-serif;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-section {
+            padding: 60px 0 100px;
         }
 
         .container {
@@ -51,54 +127,64 @@
             padding: 0 40px;
         }
 
-        .articles-grid {
+        .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
-            margin-bottom: 80px;
         }
 
-        .article {
+        .portfolio-item {
             cursor: pointer;
-            transition: opacity 0.2s ease;
+            transition: all 0.4s ease;
         }
 
-        .article:hover {
-            opacity: 0.7;
+        .portfolio-item:hover {
+            transform: translateY(-8px);
         }
 
-        .article-image {
+        .portfolio-item:hover .item-image {
+            filter: grayscale(0%);
+        }
+
+        .item-image {
             width: 100%;
-            height: 280px;
+            height: 400px;
             object-fit: cover;
-            border: 1px solid black;
-            margin-bottom: 15px;
+            filter: grayscale(100%);
+            transition: filter 0.4s ease;
+            margin-bottom: 25px;
         }
 
-        .article-title {
-            font-size: 1.1rem;
-            font-weight: 400;
+        .item-content {
+            padding: 0 5px;
+        }
+
+        .item-title {
+            font-size: 1.4rem;
+            font-weight: 500;
             margin-bottom: 8px;
-            line-height: 1.3;
+            letter-spacing: 0.5px;
         }
 
-        .article-date {
+        .item-date {
             font-size: 0.9rem;
-            color: #666;
+            color: #888;
             font-weight: 300;
+            letter-spacing: 1px;
         }
 
-        /* Article view */
+        /* Article View */
         .article-view {
             display: none;
-            animation: fadeIn 0.3s ease;
+            padding: 100px 0 80px;
+            animation: fadeIn 0.5s ease;
         }
 
         .article-view.active {
             display: block;
         }
 
-        .article-content {
+        .article-container {
             max-width: 800px;
             margin: 0 auto;
             padding: 0 40px;
@@ -106,98 +192,129 @@
 
         .article-hero {
             width: 100%;
-            max-height: 70vh;
-            object-fit: contain;
-            border: 1px solid black;
-            margin-bottom: 40px;
+            height: 60vh;
+            object-fit: cover;
+            filter: grayscale(100%);
+            margin-bottom: 50px;
         }
 
         .article-meta {
-            margin-bottom: 40px;
-            padding-bottom: 20px;
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
             border-bottom: 1px solid #eee;
         }
 
-        .article-view .article-title {
-            font-size: 1.8rem;
+        .article-view .item-title {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .article-view .item-date {
+            font-size: 1rem;
             margin-bottom: 10px;
         }
 
-        .article-view .article-date {
-            font-size: 1rem;
+        .article-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: left;
+            font-weight: 300;
+            font-family: 'Gorton', Arial, sans-serif;
         }
 
-        .article-description {
-            font-size: 1rem;
-            line-height: 1.6;
+        /* Footer */
+        .footer {
+            background: white;
+            border-top: 1px solid #eee;
+            padding: 60px 0 40px;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .footer p {
+            color: #888;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            font-family: 'Gorton', Arial, sans-serif;
+        }
+
+        .social-links {
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .social-link {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            font-family: 'Gorton', Arial, sans-serif;
+        }
+
+        .social-link:hover {
             color: #333;
         }
 
-        /* Upload section */
-        .upload-section {
-            text-align: center;
-            padding: 40px;
-            border: 2px dashed #ccc;
-            margin-bottom: 60px;
-        }
-
-        .upload-section h2 {
-            font-size: 1.2rem;
-            font-weight: 400;
-            margin-bottom: 20px;
-        }
-
-        .upload-btn {
-            background: black;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            font-family: inherit;
-        }
-
-        .upload-btn:hover {
-            background: #333;
-        }
-
-        #fileInput {
-            display: none;
-        }
-
+        /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive design */
-        @media (max-width: 900px) {
-            .articles-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .articles-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-                letter-spacing: 1px;
-            }
-            
-            .container,
-            .article-content {
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
                 padding: 0 20px;
             }
             
-            .header {
-                padding: 40px 20px 30px;
-                margin-bottom: 40px;
+            .nav-menu {
+                gap: 20px;
+            }
+            
+            .nav-item {
+                font-size: 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .container,
+            .hero-container,
+            .article-container,
+            .footer-content {
+                padding: 0 20px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .item-image {
+                height: 300px;
+            }
+
+            .article-hero {
+                height: 40vh;
             }
         }
 
@@ -212,45 +329,112 @@
     </style>
 </head>
 <body>
-    <header class="header">
-        <h1 onclick="showHome()">APPLY FRICTION</h1>
-    </header>
-
-    <div class="home-view" id="homeView">
-        <div class="container">
-            <div class="upload-section">
-                <h2>Add New Article</h2>
-                <input type="file" id="fileInput" accept="image/*">
-                <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
-                    Upload Image
-                </button>
-            </div>
-
-            <div id="articlesGrid" class="articles-grid">
-                <!-- Articles will appear here when you upload them -->
+    <!-- Fixed Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="logo" onclick="showHome()">APPLY FRICTION</div>
+            <div class="nav-menu">
+                <button class="nav-item" onclick="showHome()">Work</button>
+                <button class="nav-item" onclick="showHome()">About</button>
+                <button class="nav-item" onclick="showHome()">Contact</button>
             </div>
         </div>
+    </nav>
+
+    <!-- Home View -->
+    <div class="home-view" id="homeView">
+        <main class="main-content">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-container">
+                    <h1>APPLY FRICTION</h1>
+                    <p>Visual stories through photography and design</p>
+                </div>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section class="portfolio-section">
+                <div class="container">
+                    <div id="portfolioGrid" class="portfolio-grid">
+                        <!-- Articles will be dynamically inserted here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">Email</a>
+                </div>
+                <p>&copy; 2025 Apply Friction. All rights reserved.</p>
+            </div>
+        </footer>
     </div>
 
-    <!-- Article view -->
+    <!-- Article View -->
     <div class="article-view" id="articleView">
-        <div class="article-content">
-            <img id="articleHero" src="" alt="" class="article-hero">
-            <div class="article-meta">
-                <h1 id="articleTitle" class="article-title"></h1>
-                <p id="articleDate" class="article-date"></p>
+        <main class="main-content">
+            <div class="article-container">
+                <img id="articleHero" src="" alt="" class="article-hero">
+                <div class="article-meta">
+                    <h1 id="articleTitle" class="item-title"></h1>
+                    <p id="articleDate" class="item-date"></p>
+                </div>
+                <div id="articleDescription" class="article-description"></div>
             </div>
-            <div id="articleDescription" class="article-description">
-                <!-- Article content will be inserted here -->
-            </div>
-        </div>
+        </main>
     </div>
 
     <script>
+        // Sample articles - replace with your content
         const articles = [
-            // Your uploaded articles will appear here
+            {
+                image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop&sat=-100',
+                title: 'Mountain Solitude',
+                date: 'March 15, 2025',
+                description: 'Standing at the edge of infinity, where earth meets sky in perfect silence. The mountain peak offers a moment of profound stillness, stripped of color but rich in texture and meaning. This journey to the summit required patience, endurance, and an appreciation for the subtle beauty found in monochrome landscapes.'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop&sat=-100',
+                title: 'Coastal Rhythms',
+                date: 'March 10, 2025',
+                description: 'The eternal dance of waves against stone. Each crash writes a temporary poem on the shore, only to be erased and written again. In monochrome, the ocean reveals its essential character - raw, powerful, and endlessly creative. The interplay of light and shadow creates a meditation on impermanence.'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop&sat=-100',
+                title: 'Forest Paths',
+                date: 'March 5, 2025',
+                description: 'A journey through shadows and light, where each step forward reveals new patterns in the interplay of bark, leaf, and sky. The path ahead disappears into mystery, inviting contemplation about the unknown territories that lie beyond our immediate vision. Nature becomes geometry in black and white.'
+            }
         ];
 
+        // Generate portfolio items
+        function generatePortfolio() {
+            const grid = document.getElementById('portfolioGrid');
+            grid.innerHTML = '';
+            
+            articles.forEach((article, index) => {
+                const item = document.createElement('div');
+                item.className = 'portfolio-item';
+                item.onclick = () => openArticle(index);
+                
+                item.innerHTML = `
+                    <img src="${article.image}" alt="${article.title}" class="item-image">
+                    <div class="item-content">
+                        <h2 class="item-title">${article.title}</h2>
+                        <p class="item-date">${article.date}</p>
+                    </div>
+                `;
+                
+                grid.appendChild(item);
+            });
+        }
+
+        // Article navigation
         function openArticle(index) {
             const article = articles[index];
             
@@ -261,57 +445,21 @@
             
             document.getElementById('homeView').classList.add('hidden');
             document.getElementById('articleView').classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
         }
 
         function showHome() {
             document.getElementById('homeView').classList.remove('hidden');
             document.getElementById('articleView').classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
         }
 
-        // Handle file uploads
-        document.getElementById('fileInput').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file && file.type.startsWith('image/')) {
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    const articlesGrid = document.getElementById('articlesGrid');
-                    const articleCount = articles.length;
-                    
-                    // Create new article object
-                    const newArticle = {
-                        image: e.target.result,
-                        title: file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, ' '),
-                        date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
-                        description: 'A new addition to the collection. Click to view full size.'
-                    };
-                    
-                    articles.unshift(newArticle); // Add to beginning (most recent)
-                    
-                    // Create new article element
-                    const articleElement = document.createElement('div');
-                    articleElement.className = 'article';
-                    articleElement.onclick = function() { openArticle(0); };
-                    
-                    articleElement.innerHTML = `
-                        <img src="${e.target.result}" alt="${newArticle.title}" class="article-image" style="filter: grayscale(100%);">
-                        <h2 class="article-title">${newArticle.title}</h2>
-                        <p class="article-date">${newArticle.date}</p>
-                    `;
-                    
-                    // Insert at the beginning
-                    articlesGrid.insertBefore(articleElement, articlesGrid.firstChild);
-                    
-                    // Update onclick handlers for all articles
-                    const allArticles = articlesGrid.querySelectorAll('.article');
-                    allArticles.forEach((article, index) => {
-                        article.onclick = function() { openArticle(index); };
-                    });
-                };
-                
-                reader.readAsDataURL(file);
-            }
-        });
+        // Initialize portfolio on page load
+        document.addEventListener('DOMContentLoaded', generatePortfolio);
     </script>
 </body>
 </html>
